@@ -2,6 +2,10 @@ Project 1 - Frogger
 ====================
 Frogger is a classic arcade game. Players need to control the figure crossing the road without collisions with bugs.
 
+Running
+--------
+To run the game, open _**index.html**_ in your browser.
+
 Usage
 ------------
 To player Frogger, only 4 direction keys are needed.

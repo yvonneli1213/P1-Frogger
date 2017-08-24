@@ -10,7 +10,7 @@ var Enemy = function(row) {
     this.y = (row + 0.75) * tableY;
     this.x = -(Math.random()*10)*tableX;
     this.speed = (Math.random()*(3-1) + 1) * 150;
-};
+}
 
 // 此为游戏必须的函数，用来更新敌人的位置
 // 参数: dt ，表示时间间隙
@@ -29,24 +29,24 @@ Enemy.prototype.update = function(dt) {
     if (player.y === 0){
       this.reset();
     };
- };
+ }
 
 // 此为游戏必须的函数，用来在屏幕上画出敌人，
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
+}
 
 Enemy.prototype.reset = function() {
   this.x = -(Math.random()*5)*tableX;
   this.speed = (Math.random()*(3-1) + 1) * 100;
-};
+}
 // 现在实现你自己的玩家类
 // 这个类需要一个 update() 函数， render() 函数和一个 handleInput()函数
 var Player = function() {
     this.sprite = 'images/char-boy.png';
     this.x = 2 * tableX;
     this.y = (4 + 0.75) * tableY;
-};
+}
 
 Player.prototype.update = function() {
     if (this.x > 4*tableX){
@@ -65,11 +65,11 @@ Player.prototype.update = function() {
     };
     this.checkCollisions();
     return this.x, this.y;
-};
+}
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
+}
 
 Player.prototype.handleInput = function(key) {
     switch(key){
@@ -78,12 +78,12 @@ Player.prototype.handleInput = function(key) {
       case "left" : this.x += -tableX; break;
       case "right" : this.x += tableX; break;
     };
-};
+}
 
 Player.prototype.reset = function() {
   this.x = 2 * tableX;
   this.y = (4 + 0.75) * tableY;
-};
+}
 
 Player.prototype.checkCollisions = function() {
     for (var i=0; i<allEnemies.length; i++) {
@@ -93,7 +93,7 @@ Player.prototype.checkCollisions = function() {
         this.reset();
       };
     };
-};
+}
 // 现在实例化你的所有对象
 // 把所有敌人的对象都放进一个叫 allEnemies 的数组里面
 // 把玩家对象放进一个叫 player 的变量里面
@@ -117,4 +117,4 @@ document.addEventListener('keyup', function(e) {
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
-});
+})

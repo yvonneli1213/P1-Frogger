@@ -1,7 +1,21 @@
+Project 1 - Frogger
+====================
+Frogger is a classic arcade game. Players need to control the figure crossing the road without collisions with bugs.
 
-前端纳米学位街机游戏克隆项目
-===============================
+Usage
+------------
+To player Frogger, only 4 direction keys are needed.
+  - "UP" --- player going **up** by 1 step
+  - "DOWN" --- player going **down** by 1 step
+  - "LEFT" --- player going **left** by 1 step
+  - "RIGHT" --- player going **right** by 1 step
 
-学生应该用这个[评审标准](https://review.udacity.com/#!/rubrics/499/view))来自我检查自己提交的代码。 确认自己写的函数要是**面向对象的** -  要么是类函数（就像函数 Player 和 Enemy）要么是类的原型链上的函数比如 Enemy.prototype.checkCollisions ， 在类函数里面或者类的原型链函数里面适当的使用关键词 'this' 来引用调用该函数的对象实例。最后保证你的**readme.md**文件要写明关于如何运行和如何玩你的街机游戏的指引。
+Players win when they reached the river. And the following message will show up.
+> You WIN!!! Try again?
 
-关于如何开始这个项目的更详细的指导，可以查阅这份[指南](https://gdgdocs.org/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true)。
+If any bug crashes into player, then game over and you need to restart. The following message will appear.
+> Oh no... Try again?
+
+License
+--------
+The content of this repository is licensed under a [MIT License](https://opensource.org/licenses/MIT)

@@ -1,5 +1,5 @@
-var tableX = 101;
-var tableY = 83;
+var tableX = 101; // width per step
+var tableY = 83; // height per step
 
 // 这是我们的玩家要躲避的敌人
 var Enemy = function(row) {
@@ -9,7 +9,6 @@ var Enemy = function(row) {
 
     this.y = (row + 0.75) * tableY;
     this.x = -(Math.random()*10)*tableX;
-
     this.speed = (Math.random()*(3-1) + 1) * 150;
 };
 
@@ -50,12 +49,12 @@ var Player = function() {
 };
 
 Player.prototype.update = function() {
-    if (this.x > 404){
-      this.x = 404;
+    if (this.x > 4*tableX){
+      this.x = 4*tableX;
     } else if (this.x < 0){
       this.x = 0;
-    } else if (this.y > 404 - 0.5 * tableY){
-      this.y = 404 - 0.5 * tableY;
+    } else if (this.y > 4.75 * tableY){
+      this.y = 4.75 * tableY;
     } else if (this.y < 0 * tableY){
       this.y = 0 * tableY;
     } else if (this.y === 0 * tableY){
@@ -64,6 +63,7 @@ Player.prototype.update = function() {
         this.reset();
       };
     };
+    this.checkCollisions();
     return this.x, this.y;
 };
 
@@ -85,6 +85,15 @@ Player.prototype.reset = function() {
   this.y = (4 + 0.75) * tableY;
 };
 
+Player.prototype.checkCollisions = function() {
+    for (var i=0; i<allEnemies.length; i++) {
+      if (this.y === allEnemies[i].y
+          && Math.abs(this.x - allEnemies[i].x) < 45) {
+        alert("Oh no... Try again?");
+        this.reset();
+      };
+    };
+};
 // 现在实例化你的所有对象
 // 把所有敌人的对象都放进一个叫 allEnemies 的数组里面
 // 把玩家对象放进一个叫 player 的变量里面
@@ -97,7 +106,6 @@ var allEnemies = [
 
 var player = new Player();
 
-
 // 这段代码监听游戏玩家的键盘点击事件并且代表将按键的关键数字送到 Play.handleInput()
 // 方法里面。你不需要再更改这段代码了。
 document.addEventListener('keyup', function(e) {
@@ -106,16 +114,7 @@ document.addEventListener('keyup', function(e) {
         38: 'up',
         39: 'right',
         40: 'down'
-        // 9: 'character'
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
-
-// document.addEventListener('keyup', function(e) {
-//     var allowedKeys = {
-//         32: 'Pause'
-//     };
-//
-//     player.handleInput(allowedKeys[e.keyCode]);
-// });
